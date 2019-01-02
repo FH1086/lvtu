@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<div style="padding: 100px 100px 10px;">
+    <form class="bs-example bs-example-form" role="form" method="post" action="{:Url('Article/edit_content',['id'=>$articlelist.id])}" enctype="multipart/form-data">
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">标题</span>
+            <input type="text" class="form-control" placeholder="请输入标题" name="title" value="{$articlelist.title}">
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">作者</span>
+            <input type="text" class="form-control" placeholder="请输入作者" name="author" value="{$articlelist.author}">
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">类别</span>
+            <select class="btn btn-default btn-lg btn-block" name="leibie">
+                <option value="{$articlelist.leibie}">{$articlelist.leibie}</option>
+                <option value="新闻" >新闻</option>
+                <option value="资讯">资讯 </option>
+                <option value="攻略">攻略</option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group">
+            <span class="input-group-addon">内容</span>
+            <textarea class="form-control" rows="10" name="content" >{$articlelist.content}</textarea>
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">图片</span>
+            <input type="file" class="form-control" name="image">
+            {if condition="$articlelist.pic neq ''"}
+            <img src="{$articlelist.pic}" width="60" style="float: left;">
+            {else /}
+            暂无缩略图
+            {/if}
+        </div>
+        <br>
+        <input class="btn btn-info" type="submit" value="修改">
+    </form>
+</div>
+</body>
+</html>

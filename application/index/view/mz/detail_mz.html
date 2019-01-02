@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>民族详情</title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+</head>
+<style>
+    a{
+        font-size: large;
+        margin-left: 50px;
+        display: block;
+        padding: 10px;
+
+    }
+</style>
+<body>
+<!--页头-->
+{include file='../application/index/view/common/indexheader.html'/}
+
+<!--主体-->
+<div style="padding-left: 20%;padding-right: 20%;display: block" >
+    <div class="container">
+        <div class="page-header">
+            <h1 id="top">【{$data.name}】</h1>
+        </div>
+        <div class="container" >
+            <div class="col-md-3 column " >
+                <ul class="list-unstyled" >
+                    <a href="#je">
+                        民族介绍
+                    </a><br>
+                    <a href="#je">
+                        民族历史
+                    </a><br>
+                    <a href="#ls">
+                        民族文化
+                    </a><br>
+                    <a href="#ys">
+                       民族饮食
+                    </a><br>
+                    <a href="#zj">
+                       民族宗教
+                    </a><br>
+                    <a href="#fs">
+                       民族服饰
+                    </a><br>
+                    <a href="#xs">
+                        民族习俗
+                    </a><br>
+                    <a href="#zy">
+                       注意事项
+                    </a>
+                </ul>
+            </div>
+            <div class=" col-sm-9">
+                <img src="{$data.pic}" width="100%">
+            </div>
+        </div>
+        <div class="page-header">
+        </div>
+        <div class="container">
+                    <div class="container" >
+                        <h3 class="text-danger" id="je">介绍：</h3>
+                        <div>{$data.introduction}</div>
+                    </div>
+                    <div class="container" >
+                        <h3 class="text-danger"id="ls">历史：</h3>
+                        <p> {$data.history}</p>
+                    </div>
+                    <div class="container">
+                        <h3 class="text-danger" id="wh">文化：</h3>
+                        <p>{$data.culture}</p>
+                    </div>
+                    <div class="container">
+                        <h3 class="text-danger" id="ys">饮食：</h3>
+                        <p>{$data.food}</p>
+                    </div>
+                    <div class="container">
+                        <h3 class="text-danger" id="zj">宗教：</h3>
+                        <p>{$data.religon}</p>
+                    </div>
+                    <div class="container">
+                        <h3 class="text-danger" id="fs"> 服饰：</h3>
+                        <p>{$data.clothes}</p>
+                    </div>
+                    <div class="container">
+                        <h3 class="text-danger" id="xs"> 习俗：</h3>
+                        <p>{$data.habit}</p>
+                    </div>
+                    <div class="container">
+                        <h3 class="text-danger" id="zy"> 注意事项：</h3>
+                        <p>{$data.notice}</p>
+                    </div>
+            <a class="pull-right text-muted" type="button" href="#top">回到顶部</a>
+        </div>
+    </div>
+</div>
+
+
+<!--页脚-->
+{include file='../application/index/view/common/foot.html'/}
+</body>
+</html>

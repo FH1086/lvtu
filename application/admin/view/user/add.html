@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="/lvtu/public/static/css/common.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<a href="admin.html">返回</a>
+<!--添加管理员-->
+<div align="center">
+    <div class="login_title">
+        添加管理员
+    </div>
+    <form  action="{:Url('User/add_admin')}" method="post">
+        <div >
+            <div class="form_text_ipt">
+                <input type="text" name="user" placeholder="账号">
+            </div>
+            <div class="form_text_ipt">
+                <input type="password" name="pwd" placeholder="密码">
+            </div>
+            <div class="form_btn">
+                <select name="qx" class="form_btn">
+                    <option value="超级管理员">超级管理员</option>
+                    <option value="文章管理员">文章管理员</option>
+                    <option value="路线管理员">路线管理员</option>
+                    <option value="客栈管理员">客栈管理员</option>
+                    <option value="订单管理员">订单管理员</option>
+                    <option value="留言管理员">留言管理员</option>
+                </select>
+            </div>
+            <div class='form_btn'>
+                <button class="btn btn-info" type="submit" >添加</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<div style="padding: 100px 100px 10px;">
+    <form class="bs-example bs-example-form" role="form" method="post" action="{:Url('System/edit_mzcontent',['id'=>$data.id])}" enctype="multipart/form-data">
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">民称</span>
+            <input type="text" class="form-control" placeholder="请输入民族民称" name="name" value='{$data.name}'>
+        </div>
+        <br>
+        <div class="form-group">
+            <span class="input-group-addon">介绍</span>
+            <textarea class="form-control" rows="10" name="introduction" >{$data.introduction}</textarea>
+        </div>
+        <br>
+        <div class="form-group">
+            <span class="input-group-addon">历史</span>
+            <textarea class="form-control" rows="10" name="history">{$data.history}</textarea>
+        </div>
+        <br>
+        <div class="form-group">
+            <span class="input-group-addon">文化</span>
+            <textarea class="form-control" rows="10" name="culture">{$data.culture}</textarea>
+        </div>
+        <br>
+        <div class="form-group">
+            <span class="input-group-addon">饮食习惯</span>
+            <textarea class="form-control" rows="10" name="food">{$data.food}</textarea>
+        </div>
+        <br>
+        <div class="form-group">
+            <span class="input-group-addon">宗教</span>
+            <textarea class="form-control" rows="10" name="religon">{$data.religon}</textarea>
+        </div>
+        <br>
+        <div class="form-group">
+            <span class="input-group-addon">服饰</span>
+            <textarea class="form-control" rows="10" name="clothes">{$data.clothes}</textarea>
+        </div>
+        <br>
+        <div class="form-group">
+            <span class="input-group-addon">注意事项</span>
+            <textarea class="form-control" rows="10" name="notice">{$data.notice}</textarea>
+        </div>
+        <br>
+        <div class="form-group">
+            <span class="input-group-addon">习俗</span>
+            <textarea class="form-control" rows="10" name="habit">{$data.habit}</textarea>
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">图片</span>
+            <input type="file" class="form-control" name="image">
+            <img src="{$data.pic}">
+        </div>
+        <br>
+        <input class="btn btn-info" type="submit" value="提交">
+    </form>
+</div>
+</body>
+</html>

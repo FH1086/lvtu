@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<div style="padding: 100px 100px 10px;">
+    <h1 align="center">回复{$list.user}的留言</h1>
+    <form class="bs-example bs-example-form" role="form" method="post" action="{:Url('Message/respone_message',['id'=>$list.id])}" enctype="multipart/form-data">
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">用户</span>
+            <input type="text" class="form-control" id="disabledInput"  placeholder="请输入作者" name="user" value="{$list.user}" disabled>
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">留言内容</span>
+            <textarea class="form-control"  rows="10" name="msg" disabled>{$list.msg}</textarea>
+        </div>
+
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon " >回复内容</span>
+            <textarea class="form-control" rows="10" name="respone"></textarea>
+        </div>
+        <br>
+        <input class="btn btn-info" type="submit" value="回复">
+    </form>
+</div>
+</body>
+</html>

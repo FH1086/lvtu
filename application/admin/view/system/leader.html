@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:white-space="http://www.w3.org/1999/xhtml" xmlns:overflow="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+    <link href="/lvtu/public/static/css/layui.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+    <script src="/lvtu/public/static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="page-header">
+    <h1>向导管理<small>管理部分地区向导信息</small></h1>
+</div>
+<a href="add_leader.html" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true">添加</span></a>
+<!--显示数据-->
+<style type="text/css">
+    td{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+    <table  id="tb_leader" style="table-layout:fixed">
+        {volist name="list" id="vo" empty="暂时没有数据"}
+        {if is_array($vo)}
+        <tr>
+            <td >{$vo.id}</td>
+            <td >{$vo.name}</td>
+            <td >{$vo.introduction}</td>
+            <td >{$vo.tel}</td>
+            <td >{$vo.price}</td>
+            <td ><img class="img-thumbnail" src="{$vo.pic}"></td>
+            <td >
+                <a class="btn btn-danger" href="{:Url('System/del_leaderdata',['id'=>$vo.id])}" onclick="if(confirm('确定要删除吗?')==false) return false;"
+                >
+                    <span class="glyphicon glyphicon-trash">删除</span>
+                </a>
+                <a  class="btn btn-info" href="{:Url('System/edit_leader',['id'=>$vo.id])}"><span class="glyphicon glyphicon-pencil">编辑</span> </a>
+            </td>
+        </tr>
+        {/if}
+        {/volist}
+    </table>
+<script src="/lvtu/public/static/js/bootstrap.js" type="text/javascript"></script>
+<script src="/lvtu/public/static/js/bootstrap-table.js" type="text/javascript"></script>
+<script src="/lvtu/public/static/js/bootstrap-table-zh-CN.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        load();
+
+    });
+    function load() {
+        $('#tb_leader').bootstrapTable({
+            toolbar:'#toolbar',
+            singleSelect:true,
+            clickToSelect:true,
+            sortName: "id",
+            sortOrder: "desc",
+            pageSize: 5,
+            pageNumber: 1,
+            showToggle: true,
+            showRefresh: true,
+            showColumns: true,
+            search: true,
+            pagination: true,
+
+            //是否显示父子表
+            columns: [ {
+                field: 'id',
+                title: '编号'
+
+            }, {
+                field: 'name',
+                title: '姓名'
+
+            }, {
+                field: 'introduction',
+                title: '简介',
+            }, {
+                field: 'tel',
+                title: '联系电话'
+
+            }, {
+                field: 'price',
+                title: '价格'
+            }, {
+                field: 'pic',
+                title: '图片'
+            }, {
+                    title: '操作'
+                } ],
+        });
+        $('#tb_leader').bootstrapTable('hideLoading')
+    }
+</script>
+</body>
+</html>

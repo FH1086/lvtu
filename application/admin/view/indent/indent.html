@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+    <link href="/lvtu/public/static/css/layui.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+    <script src="/lvtu/public/static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+</head>
+<style type="text/css">
+    td{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+<body>
+<div class="page-header">
+    <h1>订单管理<small>用于处理用户生成的订单</small><small class="pull-right">当前有<span class="badge">{$count}</span>未支付</small></h1>
+</div>
+<!--显示数据-->
+    <table  id="tb_indent" style="table-layout:fixed" >
+        <tbody >
+        {volist name="list" id="vo" empty="暂时没有数据"}
+        {if is_array($vo)}
+        <tr >
+            <td >{$vo.id}</td>
+            <td >{$vo.number}</td>
+            <td >{$vo.ydtime}</td>
+            <td >{$vo.content}</td>
+            <td >{$vo.leibie}</td>
+            <td >{$vo.uid}</td>
+            <td >{$vo.user}</td>
+            <td >{$vo.utel}</td>
+            <td >{$vo.tel}</td>
+            <td >
+                {if condition="$vo.zt eq '已支付'"}
+                <span class="btn btn-success" >{$vo.zt}</span>
+                {/if}
+                {if condition="$vo.zt eq '未支付'"}
+                <span class="btn btn-warning" >{$vo.zt}</span>
+                {/if}
+                {if condition="$vo.zt eq '已取消'"}
+                <span class="btn btn-danger " >{$vo.zt}</span>
+                {/if}
+            </td>
+            <td class=" col-sm-3" >
+                <a  class="btn btn-danger" href="{:Url('Indent/del_action',['id'=>$vo.id])}" onclick="if(confirm('确定要删除吗?')==false) return false;">
+                    <span class="glyphicon glyphicon-trash">删除</span>
+                </a>
+                <a class="btn btn-info" href="{:Url('Indent/edit_indent',['id'=>$vo.id])}" >
+                    <span class="glyphicon glyphicon-pencil">编辑</span>
+                </a>
+            </td>
+        </tr>
+        {/if}
+        {/volist}
+        </tbody>
+    </table>
+<script src="/lvtu/public/static/js/bootstrap.js" type="text/javascript"></script>
+<script src="/lvtu/public/static/js/bootstrap-table.js" type="text/javascript"></script>
+<script src="/lvtu/public/static/js/bootstrap-table-zh-CN.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        load();
+
+    });
+    function load() {
+        $('#tb_indent').bootstrapTable({
+            toolbar:'#toolbar',
+            singleSelect:true,
+            clickToSelect:true,
+            sortName: "id",
+            sortOrder: "asc",
+            pageSize: 5,
+            pageNumber: 1,
+            showToggle: true,
+            showRefresh: true,
+            showColumns: true,
+            search: true,
+            pagination: true,
+            //是否显示父子表
+            columns: [ {
+                field: 'id',
+                title: '编号'
+
+            }, {
+                field: 'number',
+                title: '外部编号'
+
+            }, {
+                field: 'ydtime',
+                title: '预订时间',
+            }, {
+                field: 'content',
+                title: '内容'
+            },  {
+                field: 'leibie',
+                title: '类别'
+            }, {
+                field: 'uid',
+                title: '用户编号'
+            }, {
+                field: 'user',
+                title: '用户'
+            },{
+                field: 'utel',
+                title: '用户联系电话'
+            },{
+                field: 'tel',
+                title: '商家联系电话'
+            },
+                {
+                    field: 'zt',
+                    title: '状态'
+                }, {
+                    title: '操作'
+                } ],
+            onLoadSuccess: function () {
+            },
+            onLoadError: function () {
+                showTips("数据加载失败！");
+            },
+            onDblClickRow: function (row, $element) {
+                var id = row.ID;
+                EditViewById(id, 'view');
+            }
+        });
+        $('#tb_indent').bootstrapTable('hideLoading')
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+
+</head>
+<body>
+<div style="padding: 100px 100px 10px;">
+    <form class="bs-example bs-example-form" role="form" method="post" action="{:Url('Hotel/add_action')}" enctype="multipart/form-data">
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">名称</span>
+            <input type="text" class="form-control" placeholder="请输入客栈名称" name="name" >
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">地址</span>
+            <input type="text" class="form-control" placeholder="请输入客栈详细地址" name="address">
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">店内设施</span>
+            <input type="text" class="form-control" placeholder="请输入客栈内具备的设施" name="sheshi">
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">价格</span>
+            <input type="text" class="form-control" placeholder="请输入客栈价格" name="price">
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">联系电话</span>
+            <input type="text" class="form-control" placeholder="请输入客栈联系电话" name="tel">
+        </div>
+        <br>
+        <div class="form-group">
+            <span class="input-group-addon">客栈介绍</span>
+            <textarea class="form-control" rows="10" name="introduction" placeholder="请输入200字左右的客栈描述"></textarea>
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">图片</span>
+            <input type="file" class="form-control" name="image">
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">客栈状态</span>
+            <input class="input-group-addon" type="radio"  name="zt" value="已审核" >已通过
+            <input class="input-group-addon" type="radio"  name="zt" value="未审核"checked>未通过
+        </div>
+        <br>
+        <input class="btn btn-info" type="submit" value="提交">
+    </form>
+</div>
+</body>
+</html>

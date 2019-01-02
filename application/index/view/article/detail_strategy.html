@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>攻略详情</title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<!--页头-->
+{include file='../application/index/view/common/indexheader.html'/}
+
+<!--主体-->
+<div style="padding-left: 20%;padding-right: 20%;display: block" >
+    <div class="container">
+        <div class="page-header">
+            <h1>【{$data.title}】<small >{$data.createtime}</small></h1>
+        </div>
+        <div >
+            <img src="{$data.pic}" width="100%">
+        </div>
+        <div class="page-header">
+        </div>
+        <div class="container">
+            <h1 class="pull-left glyphicon glyphicon-user">作者：</h1>
+            <h3 class=" pull-right">{$data.author}</h3>
+        </div>
+        <div class="container">
+            <h3>主要内容：</h3>
+            <p>{$data.content}</p>
+        </div>
+    </div>
+</div>
+
+
+<!--页脚-->
+{include file='../application/index/view/common/foot.html'/}
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+    <link href="/lvtu/public/static/css/bootstrap-datetimepicker.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+    <script src="/lvtu/public/static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="/lvtu/public/static/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <script src="/lvtu/public/static/js/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        //初始化标签，配置日期格式插件相关参数
+        $(function() {
+            $(".form_datetime").datetimepicker({
+                format : 'yyyy-mm-dd',
+                minView : 'month',
+                language : 'zh-CN',
+                autoclose : true,//选中自动关闭
+                startDate : '2018-10-15',
+                todayBtn : true
+                //显示今日按钮
+            });
+        });
+    </script>
+</head>
+<body>
+<div style="padding: 100px 100px 10px;">
+    <form class="bs-example bs-example-form" role="form" method="post" action="{:Url('Indent/edit_action',['id'=>$data.id])}" enctype="multipart/form-data">
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">用户</span>
+            <input type="text" class="form-control" placeholder="请输入用户" name="user" value="{$data.user}">
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+           <span class="input-group-addon">联系电话</span>
+            <input type="text" class="form-control" placeholder="请输入联系电话" name="tel" value="{$data.tel}">
+         </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">订单类别</span>
+                <select name="leibie" class="btn btn-default btn-lg btn-block">
+                    <option value="{$data.leibie}" selected>{$data.leibie}</option>
+                    <option value="客栈订单" >客栈订单</option>
+                    <option value="导游订单" >导游订单</option>
+                </select>
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">预订时间</span>
+            <div class="input-group date form_datetime"
+                 data-date-format="dd-MM-yyyy" data-link-field="dtp_input1">
+                <input class="form-control" size="16" type="text" name="ydtime"
+                       id="birthday" value="{$data.ydtime}" readonly> <span
+                    class="input-group-addon"> <span
+                    class="glyphicon glyphicon-remove"></span>
+						</span> <span class="input-group-addon"> <span
+                    class="glyphicon glyphicon-th"></span>
+						</span>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <span class="input-group-addon">订单详情</span>
+            <textarea class="form-control" rows="10" name="content">{$data.content}</textarea>
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">状态</span>
+            <input type="radio"  name="zt" value="已支付"  {if condition="$data.zt eq '已支付'"} checked {/if}>已支付
+            <input type="radio"  name="zt" value="未支付"  {if condition="$data.zt eq '未支付'"} checked {/if}>未支付
+            <input type="radio"  name="zt" value="已取消"  {if condition="$data.zt eq '已取消'"} checked {/if}>已取消
+        </div>
+        <br>
+        <input class="btn btn-info" type="submit" value="提交">
+    </form>
+</div>
+</body>
+</html>

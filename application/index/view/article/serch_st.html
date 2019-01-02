@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旅途攻略</title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<!--页头-->
+{include file='../application/index/view/common/indexheader.html'/}
+
+
+<!--主体-->
+<div style="padding-left: 20%;padding-right: 20%;display: block" >
+    <div class="container">
+        <div class="page-header">
+            <a class="glyphicon glyphicon-home text-warning" href="/lvtu/public/index/index/index.html"> </a> >>
+            <a class="text-danger">旅途攻略</a><br>
+            <h1 class="glyphicon glyphicon-tags">
+                最强攻略<small>带你玩遍大江南北</small>
+            </h1>
+            <form class="navbar-form pull-right"  method="post" action="{:Url('article/serch_st')}">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="" name="key"  value="{$key}">
+                </div>
+                <button type="submit" class="btn btn-default glyphicon glyphicon-search">搜索</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row" >
+        {volist name="data" id="ho" offset="0" length='12' empty="很抱歉！暂无数据"}
+        <div class="col-xm-4 col-md-4" >
+            <div class="thumbnail" >
+                <a href="{:Url('Article/detail_strategy',['id'=>$ho.id,'condition'=>'article'])}" target="_blank"><img  class="img-thumbnail" src="{$ho.pic}" >
+                    <div class="caption">
+                        <h4>{$ho.title}</h4>
+                </a>
+                <p class="glyphicon glyphicon-dashboard" >{$ho.createtime}</p><br>
+                <p class="glyphicon glyphicon-user" >{$ho.author}</p>
+                <a class="glyphicon glyphicon-heart-empty text-success pull-right" target="_blank" href="{:Url('Article/detail_strategy',['id'=>$ho.id,'condition'=>'article'])}">查看</a>
+            </div>
+        </div>
+    </div>
+    {/volist}
+</div>
+{$data->render()}
+<br>
+
+
+
+<!--页脚-->
+</div>{include file='../application/index/view/common/foot.html'/}
+</body>
+</html>

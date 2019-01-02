@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<div style="padding: 100px 100px 10px;">
+    <form class="bs-example bs-example-form" role="form" method="post" action="{:Url('Route/edit_action',['id'=>$list.id])}" enctype="multipart/form-data">
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">标题</span>
+            <input type="text" class="form-control" placeholder="请输入标题" name="title" value="{$list.title}">
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">关键词</span>
+            <input type="text" class="form-control" placeholder="请输入关键词" name="key" value="{$list.key}">
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">目的地</span>
+            <input type="text" class="form-control" placeholder="请输入目的地" name="goal" value="{$list.goal}">
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">探访民族</span>
+            <input type="text" class="form-control" placeholder="请输入探访民族" name="tfmz" value="{$list.tfmz}">
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">归属地区</span>
+            <input type="text" class="form-control" placeholder="请输入归属地区" name="diyu" value="{$list.diyu}">
+        </div>
+        <br>
+        <div class="form-group">
+            <span class="input-group-addon">路线内容</span>
+            <textarea class="form-control" rows="10" name="content">{$list.content}</textarea>
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">图片</span>
+            <input type="file" class="form-control" name="image">
+            <img src="{$list.pic}">
+        </div>
+        <br>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon">审核状态</span>
+              <input type="radio"  name="zt" value="已审核"  {if condition="$list.zt eq '已审核'"} checked {/if}>已审核
+              <input type="radio"  name="zt" value="未审核"  {if condition="$list.zt eq '未审核'"} checked {/if}>未审核
+        </div>
+        <br>
+        <input class="btn btn-info" type="submit" value="提交">
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旅途资讯</title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<!--页头-->
+{include file='../application/index/view/common/indexheader.html'/}
+
+
+<!--主体-->
+<div style="padding-left: 20%;padding-right: 20%;display: block" >
+    <div class="container">
+        <div class="page-header">
+            <a class="glyphicon glyphicon-home text-warning" href="/lvtu/public/index/index/index.html"> </a> >>
+            <a class="text-danger">旅途资讯</a><br>
+            <h1 class="glyphicon glyphicon-tags">
+                资讯列表
+            </h1>
+            <form class="navbar-form pull-right" method="post" action="{:Url('article/serch_art')}">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="" name="key" value="{$key}">
+                </div>
+                <button type="submit" class="btn btn-default glyphicon glyphicon-search">搜索</button>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row clearfix">
+            {volist name="data" id="ho" offset="0" length='6'}
+            <div class="col-md-4 column">
+                <h2>
+                    {$ho.title}
+                </h2>
+                <p>
+                    {$ho.content}
+                </p>
+                <p>
+                    {$ho.createtime}
+                </p>
+                <p>
+                    <a class="btn" href="{:Url('Article/detail_article',['id'=>$ho.id,'condition'=>'article'])}" target="_blank">View details »</a>
+                </p>
+            </div>
+            {/volist}
+        </div>
+    </div>
+    {$data->render()}
+</div>
+
+<br>
+
+
+
+<!--页脚-->
+</div>{include file='../application/index/view/common/foot.html'/}
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>向导联盟</title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<!--页头-->
+{include file='../application/index/view/common/indexheader.html'/}
+
+
+<!--主体-->
+<div style="padding-left: 10%;padding-right: 10%;display: block" >
+    <div class="container">
+        <div class="page-header">
+            <a class="glyphicon glyphicon-home text-warning" href=/lvtu/public/index/index/index.html"> </a> >>
+            <a class="text-danger">旅途向导</a><br>
+            <h1 class="glyphicon glyphicon-tags">
+                向导预订
+            </h1>
+            <form class="navbar-form pull-right" method="post" action="{:Url('leader/serch')}">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="输入向导姓名" name="key">
+                </div>
+                <button type="submit" class="btn btn-default glyphicon glyphicon-search">搜索</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row" >
+        {volist name="data" id="ho" offset="0" length='12' empty="很抱歉！暂无数据"}
+        <div class="col-xm-4 col-md-4" >
+            <div class="thumbnail" >
+                <a href="{:Url('Leader/detail_leader',['id'=>$ho.id,'condition'=>'leader'])}" target="_blank"><img class="img-thumbnail" src="{$ho.pic}" >
+                    <div class="caption">
+                        <h4>{$ho.name}</h4>
+                </a>
+                <p class="glyphicon glyphicon-earphone" >{$ho.tel}</p><br>
+                <h6 class="glyphicon glyphicon-yen text-danger">{$ho.price}/天</h6>
+                <p class="col-xm-4">{$ho.introduction}
+                <a class="glyphicon glyphicon-shopping-cart text-success pull-right" href="{:Url('Common/yuding',['id'=>$ho.id,'leibie'=>'向导','name'=>'leader'])}"
+                   onclick="if(confirm('确定要预订{$ho.name}?')==false) return false;">立即预订</a></p>
+            </div>
+        </div>
+    </div>
+    {/volist}
+    {$data->render()}
+</div>
+
+
+
+
+<!--页脚-->
+</div>{include file='../application/index/view/common/foot.html'/}
+</body>
+</html>

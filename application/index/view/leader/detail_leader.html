@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>向导详情</title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<!--页头-->
+{include file='../application/index/view/common/indexheader.html'/}
+
+<!--主体-->
+<div style="padding-left: 20%;padding-right: 20%;display: block" >
+    <div class="container">
+        <div class="page-header">
+            <h1>【{$data.name}】</h1>
+        </div>
+        <div class="col-lg-6" style="display: block">
+            <img class="img-thumbnail" src="{$data.pic}" width="100%">
+        </div>
+        <div class="col-lg-6" >
+            <div class=" center-block">
+                <h3>联系电话：{$data.tel}</h3>
+                <h3>价格：{$data.price}/天</h3>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="container">
+    <div class="page-header">
+        <h1>介绍：</h1>
+        <div>
+            {$data.introduction}
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!--页脚-->
+{include file='../application/index/view/common/foot.html'/}
+</body>
+</html>

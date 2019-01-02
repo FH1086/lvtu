@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理系统</title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+    <link href="/lvtu/public/static/css/layui.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+    <script src="/lvtu/public/static/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="/lvtu/public/static/js/bootstrap.js" type="text/javascript"></script>
+    <script src="/lvtu/public/static/js/layer.js" type="text/javascript"></script>
+</head>
+<body class="layui-layout-body">
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+            </div>
+            <form method="post" action="{:Url('Index/changpwd')}">
+            <div class="modal-body">
+                <input type="password" class="form-control" name="fpwd" placeholder="请输入原密码"><br>
+                <input type="password" class="form-control" name="pwd" placeholder="请输入密码"><br>
+                <input type="password" class="form-control" name="rpwd" placeholder="重复密码">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <input  class="btn btn-primary" type="submit"></input>
+            </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="layui-layout layui-layout-admin">
+    <!-- 头部区域 -->
+    <div class="layui-header">
+        <a href="">
+            <div class="layui-logo">旅途后台管理系统</div>
+        </a>
+
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item">
+                <a href="{:Url('index/Index/index')}">返回前台</a>
+            </li>
+        </ul>
+        {if $Think.session.admin_user}
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="">{$Think.session.admin_user}</a>
+            <li class="layui-nav-item">
+                <a data-toggle="modal" data-target="#myModal" >修改密码</a>
+
+            </li>
+            <li class="layui-nav-item">
+                <a href="{:Url('Login/logout')}">退出系统</a>
+            </li>
+            </li>
+        </ul>
+        {/if}
+    </div>
+    <!-- 左侧导航区域 -->
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll" >
+            <ul class="layui-nav layui-nav-tree">
+                <div class="layui-nav-item layui-nav-itemed" id="d1">
+                    <a data-toggle="collapse"  data-parent="#d1" href="#d1-child" >账号管理</a>
+                    <dl class="layui-nav-child"  >
+                        <dd class="collapse" id="d1-child">
+                        <a href="../user/admin.html" target="mainFrame" >管理员管理</a>
+                        <a href="../user/user.html" target="mainFrame">会员管理</a>
+                        </dd>
+                    </dl>
+                </div>
+
+                <div class="layui-nav-item layui-nav-itemed" id="d2">
+                    <a data-toggle="collapse" data-parent="#d2" href="#d2-child">文章管理</a>
+                    <dl class="layui-nav-child">
+                        <dd class="collapse" id="d2-child">
+                            <a href="../article/article" target="mainFrame">文章管理</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="layui-nav-item layui-nav-itemed" id="d3">
+                    <a data-toggle="collapse" data-parent="#d3" href="#d3-child">路线管理</a>
+                    <dl class="layui-nav-child">
+                        <dd class="collapse" id="d3-child">
+                            <a href="../route/route.html" target="mainFrame">路线管理</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="layui-nav-item layui-nav-itemed" id="d7">
+                    <a data-toggle="collapse" data-parent="#d3" href="#d7-child">客栈管理</a>
+                    <dl class="layui-nav-child">
+                        <dd class="collapse" id="d7-child">
+                            <a href="../hotel/hotel.html" target="mainFrame">客栈管理</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="layui-nav-item layui-nav-itemed" id="d4">
+                    <a data-toggle="collapse" data-parent="#d4" href="#d4-child">订单管理</a>
+                    <dl class="layui-nav-child">
+                        <dd class="collapse" id="d4-child">
+                            <a href="../indent/indent.html" target="mainFrame">订单管理</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="layui-nav-item layui-nav-itemed" id="d5">
+                    <a data-toggle="collapse" data-parent="#d5" href="#d5-child">留言管理</a>
+                    <dl class="layui-nav-child">
+                        <dd class="collapse" id="d5-child">
+                            <a href="../message/message.html" target="mainFrame">留言管理</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="layui-nav-item layui-nav-itemed" id="d6">
+                    <a data-toggle="collapse" data-parent="#d1" href="#d6-child">系统设置</a>
+                    <dl class="layui-nav-child " >
+                        <dd class="collapse" id="d6-child">
+                            <a href="../system/mz.html" target="mainFrame">民族</a>
+                            <a href="../system/leader.html" target="mainFrame">向导</a>
+                        </dd>
+                    </dl>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <!-- 内容主体区域 -->
+    <div class="layui-body">
+        <iframe  id="mainFrame" name="mainFrame" frameborder="0" width="100%"  height="100%" src="/slvyou/public/static/image/word.jpg" frameBorder="0" scrolling="yes" style="overflow-x: scroll" ></iframe>
+    </div>
+    <!-- 右侧页脚 -->
+    <div class="layui-footer">
+        © 2018 <a href=''>lvtu</a> - by  F
+    </div>
+</div>
+</body>
+<script>
+    function func7() {
+        layer.open({
+            title: '在线调试'
+            ,content: '可以填写任意的layer代码'
+        });
+    }
+</script>
+</html>

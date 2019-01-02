@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>留言板</title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<!--页头-->
+{include file='../application/index/view/common/indexheader.html'/}
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                   留言板 <small>来都来了，留点东西吧</small>
+                </h1>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-6 column">
+                    <img class="img-thumbnail"src="/slvyou/public/static/image/b3_1.jpg" height="600" width="1200"/>
+                    <div class="alert alert-success alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4>
+                            联系我们
+                        </h4> <strong>如果您有什么意见或反馈</strong> <a class="alert-link">call:15396618091</a>
+                    </div>
+                </div>
+                <div class="col-md-6 column">
+                    <form role="form" method="post" action="{:Url('Message/add')}">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email </label><input type="email" class="form-control" id="exampleInputEmail1" name="email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Name</label><input type="text" class="form-control" id="exampleInputPassword1" name="name"  placeholder="{$Think.cookie.user}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Content</label>
+                            <textarea  class="form-control" rows="10" name="msg"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-default glyphicon glyphicon-send">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--页脚-->
+{include file='../application/index/view/common/foot.html'/}
+</body>
+</html>

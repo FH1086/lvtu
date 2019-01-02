@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客栈详情</title>
+    <link href="/lvtu/public/static/css/bootstrap.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<!--页头-->
+{include file='../application/index/view/common/indexheader.html'/}
+
+<!--主体-->
+<div style="padding-left: 20%;padding-right: 20%;display: block" >
+    <div class="container">
+        <div class="page-header">
+            <h1>【{$data.name}】<small>{$data.address}</small></h1>
+        </div>
+        <div class="">
+            <img  class="img-thumbnail" src="{$data.pic}" width="100%">
+        </div>
+        <div class="page-header">
+        </div>
+        <div class="container">
+            <h1 class="pull-left glyphicon glyphicon-gift">店内设施：</h1>
+             <h3 class="glyphicon glyphicon-object-align-left pull-right">{$data.sheshi}</h3>
+        </div>
+        <div class="container">
+            <h1 class="pull-left glyphicon .glyphicon-phone-alt">联系电话：</h1>
+            <h3 class="glyphicon  pull-right">{$data.tel}</h3>
+        </div>
+        <div class="container">
+            <h3>客栈介绍：</h3>
+            <p>{$data.introduction}</p>
+            <a type="button" class="btn btn-default pull-right " href="{:Url('Common/yuding',['id'=>$data.id,'leibie'=>'客栈','name'=>'hotel'])}"
+               onclick="if(confirm('确定要预订{$data.name}?')==false) return false;" ><p class="bg-danger">立即预订</p></a>
+        </div>
+    </div>
+</div>
+
+
+<!--页脚-->
+{include file='../application/index/view/common/foot.html'/}
+</body>
+</html>
